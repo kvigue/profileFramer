@@ -3,6 +3,22 @@
     {
       "name": "United We Bargain",
       "source": "assets/overlays/united_we_bargain.png"
+    },
+    {
+      "name": "WoWGG",
+      "source": "assets/overlays/wowgg_blue_red.png"
+    },
+    {
+      "name": "WoWGG (Blue)",
+      "source": "assets/overlays/wowgg_blue.png"
+    },
+    {
+      "name": "WoWGG (Red)",
+      "source": "assets/overlays/wowgg_red.png"
+    },
+    {
+      "name": "WoWGG (Square)",
+      "source": "assets/overlays/500x500_Profile_Photo.png"
     }
   ]
 }
