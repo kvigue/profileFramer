@@ -16,6 +16,12 @@ let photoState = {
   y: 0
 };
 
+let overlayState = {
+  scale: 1,
+  x: 0,
+  y: 0
+};
+
 // Canvas setup
 const CANVAS_SIZE = 500;
 canvas.width = CANVAS_SIZE;
@@ -85,13 +91,21 @@ document.querySelector('[data-template="none"]').addEventListener('click', funct
   loadTemplate('none');
 });
 
-// Sliders - only for photo layer
+// Sliders - for photo layer
 const scaleSlider = document.getElementById('scaleSlider');
 const xSlider = document.getElementById('xSlider');
 const ySlider = document.getElementById('ySlider');
 const scaleValue = document.getElementById('scaleValue');
 const xValue = document.getElementById('xValue');
 const yValue = document.getElementById('yValue');
+
+// Sliders - for overlay
+const overlay_scaleSlider = document.getElementById('overlay_scaleSlider');
+const overlay_xSlider = document.getElementById('overlay_xSlider');
+const overlay_ySlider = document.getElementById('overlay_ySlider');
+const overlay_scaleValue = document.getElementById('overlay_scaleValue');
+const overlay_xValue = document.getElementById('overlay_xValue');
+const overlay_yValue = document.getElementById('overlay_yValue');
 
 scaleSlider.addEventListener('input', (e) => {
   const scale = e.target.value / 100;
@@ -112,11 +126,35 @@ ySlider.addEventListener('input', (e) => {
   render();
 });
 
+overlay_scaleSlider.addEventListener('input', (e) => {
+  const scale = e.target.value / 100;
+  overlayState.scale = scale;
+  overlay_scaleValue.textContent = e.target.value + '%';
+  render();
+});
+
+overlay_xSlider.addEventListener('input', (e) => {
+  overlayState.x = parseInt(e.target.value);
+  overlay_xValue.textContent = e.target.value;
+  render();
+});
+
+overlay_ySlider.addEventListener('input', (e) => {
+  overlayState.y = parseInt(e.target.value);
+  overlay_yValue.textContent = e.target.value;
+  render();
+});
+
+
 function updateSliders() {
   // Round scale to nearest 5%
   const roundedScale = Math.round(photoState.scale * 20) * 5;
-  scaleSlider.value = roundedScale;
-  scaleValue.textContent = roundedScale + '%';
+  scaleSlider.value = photoState.scale;
+  scaleValue.textContent = photoState.scale + '%';
+
+  const roundedOverlayScale = Math.round(overlayState.scale * 20) * 5;
+  overlay_scaleSlider.value = overlayState.scale;
+  overlay_scaleValue.textContent = overlayState.scale + '%';
 
   // Round x and y to nearest 10
   const roundedX = Math.round(photoState.x / 10) * 10;
@@ -126,6 +164,14 @@ function updateSliders() {
   ySlider.value = roundedY;
   xValue.textContent = roundedX;
   yValue.textContent = roundedY;
+
+  const roundedOverlayX = Math.round(overlayState.x / 10) * 10;
+  const roundedOverlayY = Math.round(overlayState.y / 10) * 10;
+
+  overlay_xSlider.value = roundedOverlayX;
+  overlay_ySlider.value = roundedOverlayY;
+  overlay_xValue.textContent = roundedOverlayX;
+  overlay_yValue.textContent = roundedOverlayY;
 }
 
 // Touch/mouse dragging for photo
@@ -285,9 +331,11 @@ function render() {
   ctx.drawImage(userImage, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
   ctx.restore();
 
-  // Draw overlay - centered, no transformations
+  // Draw overlay
   if (overlayImage && overlayImage.complete) {
     ctx.save();
+    ctx.translate(overlayState.x, overlayState.y);
+    ctx.scale(overlayState.scale, overlayState.scale);
 
     // Scale overlay to fit canvas while maintaining aspect ratio
     const overlayAspect = overlayImage.width / overlayImage.height;
