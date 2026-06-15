@@ -334,6 +334,7 @@ function render() {
   // Draw overlay
   if (overlayImage && overlayImage.complete) {
     ctx.save();
+    ctx.translate(CANVAS_SIZE / 2, CANVAS_SIZE / 2);
     ctx.translate(overlayState.x, overlayState.y);
     ctx.scale(overlayState.scale, overlayState.scale);
 
@@ -349,11 +350,7 @@ function render() {
       overlayWidth = CANVAS_SIZE * overlayAspect;
     }
 
-    // Center the overlay
-    const overlayX = (CANVAS_SIZE - overlayWidth) / 2;
-    const overlayY = (CANVAS_SIZE - overlayHeight) / 2;
-
-    ctx.drawImage(overlayImage, overlayX, overlayY, overlayWidth, overlayHeight);
+    ctx.drawImage(overlayImage, -overlayWidth / 2, -overlayHeight / 2, overlayWidth, overlayHeight);
     ctx.restore();
   }
 }
