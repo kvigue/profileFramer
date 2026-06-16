@@ -1,24 +1,36 @@
 {
   "overlays": [
     {
-      "name": "United We Bargain",
-      "source": "assets/overlays/united_we_bargain.png"
+      "name": "WoWGG Border",
+      "source": "assets/overlays/WoWGG_Frame_Slack_BlueRed.png"
     },
     {
-      "name": "WoWGG",
+      "name": "WoWGG Border (Blue)",
+      "source": "assets/overlays/WoWGG_Frame_Slack_Blue.png"
+    },
+    {
+      "name": "WoWGG Border (Red)",
+      "source": "assets/overlays/WoWGG_Frame_Slack_Red.png"
+    },
+    {
+      "name": "WoWGG Border (Rainbow)",
+      "source": "assets/overlays/WoWGG_Frame_Slack_rainbow.png"
+    },
+    {
+      "name": "WoWGG Logo",
       "source": "assets/overlays/wowgg_blue_red.png"
     },
     {
-      "name": "WoWGG (Blue)",
+      "name": "WoWGG Logo (Blue)",
       "source": "assets/overlays/wowgg_blue.png"
     },
     {
-      "name": "WoWGG (Red)",
+      "name": "WoWGG Logo (Red)",
       "source": "assets/overlays/wowgg_red.png"
     },
     {
-      "name": "WoWGG (Square)",
-      "source": "assets/overlays/500x500_Profile_Photo.png"
+      "name": "United We Bargain",
+      "source": "assets/overlays/united_we_bargain.png"
     }
   ]
 }
