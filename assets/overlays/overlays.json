@@ -17,6 +17,10 @@
       "source": "assets/overlays/WoWGG_Frame_Slack_rainbow.png"
     },
     {
+      "name": "WoWGG Border (White)",
+      "source": "assets/overlays/WoWGG_Frame_Slack.png"
+    },
+    {
       "name": "WoWGG Logo",
       "source": "assets/overlays/wowgg_blue_red.png"
     },
