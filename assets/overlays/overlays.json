@@ -33,6 +33,10 @@
       "source": "assets/overlays/wowgg_red.png"
     },
     {
+      "name": "WoWGG Logo (Rainbow)",
+      "source": "assets/overlays/wowgg_rainbow.png"
+    },
+    {
       "name": "United We Bargain",
       "source": "assets/overlays/united_we_bargain.png"
     }
